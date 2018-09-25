@@ -17,5 +17,7 @@
     text-align: left;
     margin: 10px 0;
     margin-left: -40px!important;
+    color: #fff!important;
+    text-decoration: none;
   }
   .footer ul li a {color: #fff;text-decoration: none;}

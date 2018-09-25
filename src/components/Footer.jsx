@@ -11,7 +11,7 @@ export class Footer extends Component {
           <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <h5>MY ACCOUNT</h5>
                 <ul>
-                    <li>My Account</li>
+                    <Link to ="/Client"><li>My Account</li></Link>
                     <li>Addressess</li>
                     <li>discount</li>
                     <li>Order History</li>
