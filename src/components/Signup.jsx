@@ -1,28 +1,49 @@
 import React, { Component } from 'react'
 import './Mobile.css';
 export class Signup extends Component {
-    state = {
-        firstName: "",
-        lastname: "",
-        mails: "",
-        mobile: "",
-        pass: "",
-        cpass: ""
-      };
-    
-      change = e =>
-      {
-        this.setState({
-          [e.target.name]: e.target.value
-        });
-      };
-    
-    
-    onSubmit = e =>
-    {
-      e.preventDefault();
-      console.log(this.state);
-    }
+  constructor(props)
+	{
+		super(props)
+		this.state = {
+			firstname : "",
+			lastname : "",
+			pass: "",
+      cpass : "",
+      mails: "",
+      mobile : ""
+		}	
+	}
+	change = e => 
+	{
+	 this.setState({
+		 [e.target.name] : e.target.value
+	 })
+	}
+	getWebsite = () => {
+        fetch("/").then(console.log(this.state));
+    };
+	onSubmit = e =>
+	{
+		e.preventDefault();
+		console.log(this.state);
+		this.setState({
+      firstname : "",
+			lastname : "",
+			pass: "",
+      cpass : "",
+      mails: "",
+      mobile : ""
+		})
+
+
+		fetch('admin/signup', {
+			method : "POST",
+            headers : {
+			  "Content-Type" : "application/json"
+			},
+			body : JSON.stringify(this.state),
+          }).then(console.log(this.state));
+	}
     
       render() {
         return (

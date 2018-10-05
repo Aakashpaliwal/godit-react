@@ -1,11 +1,81 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 import './midnavbar.css';
+import {Link} from 'react-router-dom';
 
-const MidNavBar = () => {
-  return (
-
-    <div>
+class midnavbar extends Component {
+  constructor(props)
+	{
+		super(props);
+		this.state = {
+			adminname : "",
+		passwrd: "",
+			redirect: false
+			  
+		}	
+		
+	}
+	change = e => 
+	{
+	 this.setState({
+		 [e.target.name] : e.target.value
+	 })
+	}
+	onLogin = e =>
+	{
+		e.preventDefault();
+		this.setState({
+		adminname : "",
+		passwrd: ""
+		})
+		console.log(this.props);
+		
+		fetch('admin/login', {
+			method : "POST",
+            headers : {
+              "Content-Type" : "application/json; charset=utf-8"
+            },
+			body : JSON.stringify(this.state)
+		  })
+		  .then(response => response.json())
+		  .then(json => {
+			   if(json.success === true){
+				this.props.onRouteChange('home');
+				}else{
+					console.log(json);
+				}
+		})
+		
+  }
+  onSignup = e =>
+	{
+		e.preventDefault();
+		this.setState({
+		adminname : "",
+		passwrd: ""
+		})
+		console.log(this.props);
+		
+		fetch('admin/login', {
+			method : "POST",
+            headers : {
+              "Content-Type" : "application/json; charset=utf-8"
+            },
+			body : JSON.stringify(this.state)
+		  })
+		  .then(response => response.json())
+		  .then(json => {
+			   if(json.success === true){
+				this.props.onRouteChange('home');
+				}else{
+					console.log(json);
+				}
+		})
+		
+	}
+  render() {
+    return (
+      <React.Fragment>
+      <div>
     <div className="second-navbar">
     <div className="container">
     <div className="row">
@@ -16,15 +86,76 @@ const MidNavBar = () => {
     <div className="custom-upper-social">
     <ul class = "list-inline">
         <li class="list-inline-item">
-           <Link to="/Login"> <button className="btn btn-info" type="button">Login</button></Link>
+           {/* <Link to="/Login"> <button className="btn btn-info" type="button">Login</button></Link> */}
+           
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Login / Signup
+</button>
         </li>
-        <li class="list-inline-item">
+        {/* <li class="list-inline-item">
            <Link to="/Signup"><button className="btn btn-primary">Signup</button></Link>
-        </li>
+        </li> */}
     </ul>
     </div>
     </div>
     </div>
+
+{/*login/signup modal*/}
+    <div className="row">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body custom-modal-body">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+    Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+    Signup</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+     <form className="godit-login-form">
+    <div class="form-group">
+      <input type="email" class="form-control custom-godit-email" id="email" placeholder="Enter email" name="email" />
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control custom-godit-email" id="pwd" placeholder="Enter password" name="pswd" />
+    </div>
+    <button type="submit" class="btn btn-info custom-godit-sbmt-btn form-control">Submit</button>
+  </form>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <form className="godit-login-form">
+    <div class="form-group">
+      <input type="text" class="form-control custom-godit-email" id="username" placeholder="Enter User Name" name="username" />
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control custom-godit-email" id="useremail" placeholder="Enter email" name="useremail" />
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control custom-godit-email" id="userpassword" placeholder="Enter password" name="userpassword" />
+    </div>
+    <button type="submit" class="btn btn-info custom-godit-sbmt-btn form-control">Submit</button>
+  </form>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+      </div>
+      {/* <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> */}
+    </div>
+  </div>
+</div>
+    </div>
+
+    {/*end login/signup modal*/}
     </div>
     </div>
 
@@ -46,7 +177,9 @@ const MidNavBar = () => {
       </li>
     </ul> */}
     </div>
-  );
-};
+      </React.Fragment>
+    );
+  }
+}
 
-export default MidNavBar;
+export default midnavbar;

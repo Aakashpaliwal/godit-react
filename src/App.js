@@ -26,20 +26,35 @@ import Client from './components/Client/Client';
 
 
 class App extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     route: 'signin',
+  //     isSignedIn: false,
+  //   }
+  
+  // }
+
+
+  // onRouteChange = (route) => {
+  //   if (route === 'signout') {
+  //     this.setState({isSignedIn: false})
+  //   } else if (route === 'home') {
+  //     this.setState({isSignedIn: true})
+  //   }
+  //   this.setState({route: route});
+  // }
   render() {
+    // const { isSignedIn, route } = this.state;
     return (
       <div>
         <NavBar />
         <MidNavBar />
+        {/* <MidNavBar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        { route === 'home'
+        ?
+        <div> */}
         <MegaMenu />
-   
-        
-        {/* <div className="content">
-          <Route path="/products" component={Products}/>
-          <Route path="/posts" component={Posts}/>
-          <Route path="/admin" component={Dashboard}/>
-          <Route path="/" exact component={Home}/>
-        </div> */}
         <div className="content">
           <Switch>
           <Route path="/products/:id" component={ProductDetails} /> }/>
@@ -64,6 +79,13 @@ class App extends Component {
           <Redirect to="/notfound" />
           </Switch>
         </div>
+        {/* </div>
+        : (
+             route === 'signin'
+             ? <Signin  onRouteChange={this.onRouteChange}/>
+             : <Register onRouteChange={this.onRouteChange}/>
+            )
+        } */}
      
         <Footer />
       </div>
