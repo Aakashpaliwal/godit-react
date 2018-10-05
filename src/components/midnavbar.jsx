@@ -7,8 +7,11 @@ class midnavbar extends Component {
 	{
 		super(props);
 		this.state = {
-			adminname : "",
-		passwrd: "",
+    user_mail : "",
+    uer_password : "",
+    user_name : "",
+    admin_mail : "",
+    admin_password : "",
 			redirect: false
 			  
 		}	
@@ -24,8 +27,11 @@ class midnavbar extends Component {
 	{
 		e.preventDefault();
 		this.setState({
-		adminname : "",
-		passwrd: ""
+      user_mail : "",
+      uer_password : "",
+      user_name : "",
+      admin_mail : "",
+      admin_password : ""
 		})
 		console.log(this.props);
 		
@@ -55,7 +61,7 @@ class midnavbar extends Component {
 		})
 		console.log(this.props);
 		
-		fetch('admin/login', {
+		fetch('admin/signup', {
 			method : "POST",
             headers : {
               "Content-Type" : "application/json; charset=utf-8"
@@ -121,26 +127,26 @@ class midnavbar extends Component {
 
      <form className="godit-login-form">
     <div class="form-group">
-      <input type="email" class="form-control custom-godit-email" id="email" placeholder="Enter email" name="email" />
+      <input type="email" class="form-control custom-godit-email" id="admin_mail" placeholder="Enter email" name="admin_mail" value={this.state.admin_mail} onChange={e => this.change(e)} />
     </div>
     <div class="form-group">
-      <input type="password" class="form-control custom-godit-email" id="pwd" placeholder="Enter password" name="pswd" />
+      <input type="password" class="form-control custom-godit-email" id="admin_password" placeholder="Enter password" name="admin_password" value={this.state.admin_password} onChange={e => this.change(e)}/>
     </div>
-    <button type="submit" class="btn btn-info custom-godit-sbmt-btn form-control">Submit</button>
+    <button type="submit" class="btn btn-info custom-godit-sbmt-btn form-control" onClick={e => this.onLogin(e)}>Submit</button>
   </form>
   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   <form className="godit-login-form">
     <div class="form-group">
-      <input type="text" class="form-control custom-godit-email" id="username" placeholder="Enter User Name" name="username" />
+      <input type="text" class="form-control custom-godit-email" id="user_name" placeholder="Enter User Name" name="user_name" value={this.state.user_name} onChange={e => this.change(e)}/>
     </div>
     <div class="form-group">
-      <input type="email" class="form-control custom-godit-email" id="useremail" placeholder="Enter email" name="useremail" />
+      <input type="email" class="form-control custom-godit-email" id="user_mail" placeholder="Enter email" name="user_mail" value={this.state.user_mail} onChange={e => this.change(e)}/>
     </div>
     <div class="form-group">
-      <input type="password" class="form-control custom-godit-email" id="userpassword" placeholder="Enter password" name="userpassword" />
+      <input type="password" class="form-control custom-godit-email" id="user_password" placeholder="Enter password" name="user_password" value={this.state.user_password} onChange={e => this.change(e)}/>
     </div>
-    <button type="submit" class="btn btn-info custom-godit-sbmt-btn form-control">Submit</button>
+    <button type="submit" class="btn btn-info custom-godit-sbmt-btn form-control" onClick={e => this.onSignup(e)}>Submit</button>
   </form>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
