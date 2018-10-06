@@ -23,7 +23,10 @@ import Refund from "./components/Pages/refund";
 import Policy from "./components/Pages/privacy";
 import Terms from "./components/Pages/termsCondition";
 import Client from './components/Client/Client';
-
+import Boradband from './components/Broadband';
+import Gas from './components/Gas';
+import Water from './components/Water';
+import Metro from './components/Metro';
 
 class App extends Component {
   // constructor() {
@@ -74,6 +77,10 @@ class App extends Component {
           <Route path="/policy" exact component = {Policy} />
           <Route path="/terms_condition" exact component = {Terms} />
           <Route path = "/Client" exact component = {Client} />
+          <Route path = "/Broadband" exact component = {Boradband} />
+          <Route path = "/Gas" exact component = {Gas} />
+          <Route path = "/Water" exact component = {Water} />
+          <Route path = "/Metro" exact component = {Metro} />
 
 
           <Redirect to="/notfound" />

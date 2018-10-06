@@ -42,25 +42,25 @@ const MegaMenu = () => {
            LandLine 
            </Link>
         </li>
-        <li className="list-inline-item">
-        <i class="fa fa-tablet fa-2x custom-icon-margin2" aria-hidden="true"></i>
+       <li className="list-inline-item">
+       <Link to ="/Broadband"> <i class="fa fa-tablet fa-2x custom-icon-margin2" aria-hidden="true"></i>
                 <br />
-            BroadBand
+            BroadBand</Link>
         </li>
         <li className="list-inline-item">
-        <i class="fa fa-free-code-camp fa-2x" aria-hidden="true"></i>
+        <Link to="Gas"><i class="fa fa-free-code-camp fa-2x" aria-hidden="true"></i>
             <br />
-            Gas 
+            Gas </Link>
         </li>
         <li className="list-inline-item">
-        <i class="fa fa-tint fa-2x custom-icon-margin4" aria-hidden="true"></i>
+        <Link to = "Water"><i class="fa fa-tint fa-2x custom-icon-margin4" aria-hidden="true"></i>
                 <br />
-            Water
+            Water</Link>
         </li>
         <li className="list-inline-item">
-        <i class="fa fa-id-card-o fa-2x custom-icon-margin3" aria-hidden="true"></i>
+       <Link to ="Metro"> <i class="fa fa-id-card-o fa-2x custom-icon-margin3" aria-hidden="true"></i>
                     <br />
-            Metro
+            Metro</Link>
         </li>
     </ul>
     </div>
